@@ -1,0 +1,27 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Alterar a cor do fundo da secção do título (Painel de Monitoramento...) */
+header.bg-primary {
+    background-color: #1d3874 !important; 
+}
+
+/* Alterar a cor da fonte do título "Evolução dos Preços" e "Tabela de Preços" */
+#graficos h2, 
+#consultas h2 {
+    color: #1d3874 !important;
+}
+
+.card {
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.table th {
+    font-weight: 600;
+}
+
+canvas {
+    max-height: 320px;
+}

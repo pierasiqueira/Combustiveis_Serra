@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de Combustíveis - Serra/ES</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold" href="#">⛽ Combustíveis Serra/ES</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#graficos">Gráficos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#consultas">Consultas SQL</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#equipe">Equipe</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <header class="bg-primary text-white text-center py-5 shadow-sm">
+        <div class="container">
+            <h1 class="display-5 fw-bold">Painel de Monitoramento de Combustíveis</h1>
+            <p class="lead">Pesquisa e análise de preços no município da Serra - ES</p>
+        </div>
+    </header>
+
+    <div class="container my-5">
+
+        <!-- SEÇÃO DE GRÁFICOS -->
+        <section id="graficos" class="mb-5">
+            <h2 class="border-bottom pb-2 text-primary">📊 Evolução dos Preços</h2>
+            <div class="row g-4 mt-2">
+                <!-- Gráfico 1 -->
+                <div class="col-lg-6">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Gráfico 1: Evolução do Preço Médio por Combustível</h5>
+                            <canvas id="grafico1"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gráfico 2 -->
+                <div class="col-lg-6">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Gráfico 2: Média de Preço por Posto</h5>
+                            <canvas id="grafico2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-5">
+
+        <!-- SEÇÃO DE CONSULTAS SQL -->
+        <section id="consultas" class="mb-5">
+            <h2 class="border-bottom pb-2 text-primary">🔍 Tabela de Preços</h2>
+
+            <!-- Consulta I -->
+            <div class="card my-4 shadow-sm">
+                <div class="card-header bg-dark text-white font-monospace">
+                    Menor e Maior Preço por Combustível
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover table-striped align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Tipo de Combustível</th>
+                                <th>Menor Valor</th>
+                                <th>Posto (Menor)</th>
+                                <th>Maior Valor</th>
+                                <th>Posto (Maior)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Gasolina Comum</td><td>R$ 6,22</td><td>POSTO METROPOLITANO</td><td>R$ 6,99</td><td>REVENDA BKR</td></tr>
+                            <tr><td>Gasolina Aditivada</td><td>R$ 6,42</td><td>POSTO METROPOLITANO</td><td>R$ 7,14</td><td>GEGEL AUTO POSTO</td></tr>
+                            <tr><td>Diesel</td><td>R$ 6,59</td><td>POSTO METROPOLITANO</td><td>R$ 6,89</td><td>POSTO OTAVIO / GEGEL</td></tr>
+                            <tr><td>Etanol</td><td>R$ 4,49</td><td>POSTO METROPOLITANO</td><td>R$ 5,09</td><td>GEGEL AUTO POSTO</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Consulta II -->
+            <div class="card my-4 shadow-sm">
+                <div class="card-header bg-dark text-white font-monospace">
+                    Amostras e Preços Médio por Posto
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover table-striped align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Posto</th>
+                                <th>Bairro</th>
+                                <th>Combustível</th>
+                                <th>Amostras</th>
+                                <th>Preço Médio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CENTRAL COMERCIO</td><td>CIVIT II</td><td>Gasolina Comum</td><td>5</td><td>R$ 6,56</td></tr>
+                            <tr><td>GEGEL AUTO POSTO</td><td>CIVIT II</td><td>Gasolina Aditivada</td><td>5</td><td>R$ 7,04</td></tr>
+                            <tr><td>POSTO OTAVIO</td><td>Jacaraípe</td><td>Etanol</td><td>5</td><td>R$ 4,71</td></tr>
+                            <tr><td>POSTO METROPOLITANO</td><td>TIMS</td><td>Diesel</td><td>5</td><td>R$ 6,61</td></tr>
+                            <tr><td>REVENDA BKR</td><td>Barcelona</td><td>Gasolina Comum</td><td>5</td><td>R$ 6,77</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Consulta III -->
+            <div class="card my-4 shadow-sm">
+                <div class="card-header bg-dark text-white font-monospace">
+                    Preço Mais Recente Registrado (30/06/2026)
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover table-striped align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Posto</th>
+                                <th>Bairro</th>
+                                <th>Combustível</th>
+                                <th>Último Valor</th>
+                                <th>Data da Coleta</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CENTRAL COMERCIO</td><td>CIVIT II</td><td>Gasolina Comum</td><td>R$ 6,65</td><td>30/06/2026</td></tr>
+                            <tr><td>GEGEL AUTO POSTO</td><td>CIVIT II</td><td>Gasolina Aditivada</td><td>R$ 7,14</td><td>30/06/2026</td></tr>
+                            <tr><td>POSTO OTAVIO</td><td>Jacaraípe</td><td>Etanol</td><td>R$ 4,69</td><td>29/06/2026</td></tr>
+                            <tr><td>POSTO METROPOLITANO</td><td>TIMS</td><td>Diesel</td><td>R$ 6,59</td><td>29/06/2026</td></tr>
+                            <tr><td>REVENDA BKR</td><td>Barcelona</td><td>Gasolina Comum</td><td>R$ 6,94</td><td>30/06/2026</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Consulta IV -->
+            <div class="card my-4 shadow-sm">
+                <div class="card-header bg-dark text-white font-monospace">
+                    Evolução do Preço no Posto Central Comércio
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover table-striped align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Posto</th>
+                                <th>Combustível</th>
+                                <th>Data Coleta</th>
+                                <th>Valor/Litro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CENTRAL COMERCIO</td><td>Gasolina Comum</td><td>02/06/2026</td><td>R$ 6,39</td></tr>
+                            <tr><td>CENTRAL COMERCIO</td><td>Gasolina Comum</td><td>08/06/2026</td><td>R$ 6,39</td></tr>
+                            <tr><td>CENTRAL COMERCIO</td><td>Gasolina Comum</td><td>16/06/2026</td><td>R$ 6,69</td></tr>
+                            <tr><td>CENTRAL COMERCIO</td><td>Gasolina Comum</td><td>22/06/2026</td><td>R$ 6,69</td></tr>
+                            <tr><td>CENTRAL COMERCIO</td><td>Gasolina Comum</td><td>30/06/2026</td><td>R$ 6,65</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO EQUIPE -->
+        <section id="equipe" class="my-5">
+            <div class="card bg-light shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Projeto Acadêmico - UVV</h5>
+                    <p class="card-text mb-1"><strong>Alunos:</strong> Piera Siqueira Nobre & Allan Martins Monteiro de Barros</p>
+                    <p class="card-text text-muted"><strong>Disciplina:</strong> Arquitetura de Dados Relacionais I - AOP03</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Dependências do Node (caso uses no projeto ou Vercel CLI)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ficheiros do Vercel
+.vercel
+
+# Ficheiros de ambiente e configurações do sistema/IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Ficheiros temporários e logs
+*.log
